@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+	<channel>
+		<item>
+			<title>Шведский суд отказался рассматривать апелляцию основателя Wikileaks</title>
+			<description>A Swedish court has refused to hear an appeal of the founder of Wikileaks</description>
+			<dc:publisher>Русновости</dc:publisher>
+		</item>
+		<item>
+			<title>НАТО и США разработали планы обороны стран Балтии против России</title>
+			<description>NATO and the USA have developed the Baltic defense plans against Russia</description>
+			<dc:publisher>Русновости</dc:publisher>
+		</item>
+		<item>
+			<title>Полиция Великобритании нашла основателя WikiLeaks, но, не арестовала</title>
+			<description>UK police has found the founder WikiLeaks, but has not arrested</description>
+			<dc:publisher>Русновости</dc:publisher>
+		</item>
+		<item>
+			<title>В Стокгольме и Осло сегодня состоится вручение Нобелевских премий</title>
+			<description>In Stockholm and Oslo The Nobel Peace Prize will be awarded today</description>
+			<dc:publisher>Русновости</dc:publisher>
+		</item>
+	</channel>
+</rss>

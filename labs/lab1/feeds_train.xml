@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+	<channel>
+		<item>
+			<title>Британская полиция знает о местонахождении основателя WikiLeaks</title>
+			<description>The UK police knows about the location of WikiLeaks founder</description>
+			<dc:publisher>Русновости</dc:publisher>
+		</item>
+		<item>
+			<title>В суде США начинается процесс против россиянина, рассылавшего спам</title>
+			<description>In court, the USA begins the process against the Russian man, who sends spam</description>
+			<dc:publisher>Русновости</dc:publisher>
+		</item>
+		<item>
+			<title>Церемонию вручения Нобелевской премии мира бойкотируют 19 стран</title>
+			<description>The Nobel Peac Prize is boycotted by 19 countries</description>
+			<dc:publisher>Русновости</dc:publisher>
+		</item>
+		<item>
+			<title>В Великобритании арестован основатель сайта Wikileaks Джулиан Ассандж</title>
+			<description>The founder of WikiLeaks Julian Assange is arrested in UK</description>
+			<dc:publisher>Русновости</dc:publisher>
+		</item>
+		<item>
+			<title>Украина игнорирует церемонию вручения Нобелевской премии</title>
+			<description>Ukraine ignores the Nobel Peace Prize</description>
+			<dc:publisher>Русновости</dc:publisher>
+		</item>
+	</channel>
+</rss>
