@@ -61,7 +61,7 @@ public class StudentsWithUI extends GUIState {
 		yardPortrayal.setField(students.yard);
 		yardPortrayal.setPortrayalForAll(new MovablePortrayal2D(
 				new CircledPortrayal2D(new LabelledPortrayal2D(
-						new OvalPortrayal2D() {
+						new OvalPortrayal2D(2.5) {
 							public void draw(Object object,
 									Graphics2D graphics, DrawInfo2D info) {
 								Student student = (Student) object;

@@ -1,6 +1,7 @@
 package ru.arkuzmin.simulation.model;
 
 import sim.engine.SimState;
+import sim.engine.Steppable;
 import sim.field.continuous.Continuous2D;
 import sim.field.network.Network;
 import sim.util.Bag;
@@ -14,6 +15,19 @@ public class Students extends SimState {
 	double randomMultiplier = 0.1;
 
 	public Continuous2D yard = new Continuous2D(1, 100, 100);
+
+	public double TEMPERING_CUT_DOWN = 0.99;
+	public double TEMPERING_INITIAL_RANDOM_MULTIPLIER = 10.0;
+	public boolean tempering = true;
+
+	public boolean isTempering() {
+		return tempering;
+	}
+
+	public void setTempering(boolean val) {
+		tempering = val;
+	}
+
 	public int numStudends = 50;
 	public Network buddies = new Network(false);
 
@@ -23,6 +37,18 @@ public class Students extends SimState {
 
 	public void start() {
 		super.start();
+
+		// add the tempering agent
+		if (tempering) {
+			randomMultiplier = TEMPERING_INITIAL_RANDOM_MULTIPLIER;
+			schedule.scheduleRepeating(schedule.EPOCH, 1, new Steppable() {
+				public void step(SimState state) {
+					if (tempering)
+						randomMultiplier *= TEMPERING_CUT_DOWN;
+				}
+			});
+		}
+
 		yard.clear();
 		buddies.clear();
 
