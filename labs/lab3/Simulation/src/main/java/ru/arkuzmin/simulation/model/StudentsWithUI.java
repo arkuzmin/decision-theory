@@ -22,10 +22,10 @@ import sim.portrayal.simple.OvalPortrayal2D;
 
 public class StudentsWithUI extends GUIState {
 
-	public Display2D display;
-	public JFrame displayFrame;
-	ContinuousPortrayal2D yardPortrayal = new ContinuousPortrayal2D();
-	NetworkPortrayal2D buddiesPortrayal = new NetworkPortrayal2D();
+	private Display2D display;
+	private JFrame displayFrame;
+	private ContinuousPortrayal2D yardPortrayal = new ContinuousPortrayal2D();
+	private NetworkPortrayal2D buddiesPortrayal = new NetworkPortrayal2D();
 
 	public StudentsWithUI(SimState state) {
 		super(state);
@@ -38,7 +38,7 @@ public class StudentsWithUI extends GUIState {
 	}
 
 	public static String getName() {
-		return "Student Schoolyard Cliques";
+		return "Распределение студентов";
 	}
 
 	public StudentsWithUI() {
@@ -57,32 +57,33 @@ public class StudentsWithUI extends GUIState {
 
 	public void setupPortrayals() {
 		Students students = (Students) state;
-		// tell the portrayals what to portray and how to portray them
-		yardPortrayal.setField(students.yard);
+		// Настройки отрисовки
+		yardPortrayal.setField(students.getYard());
 		yardPortrayal.setPortrayalForAll(new MovablePortrayal2D(
 				new CircledPortrayal2D(new LabelledPortrayal2D(
-						new OvalPortrayal2D(2.5) {
-							public void draw(Object object,
-									Graphics2D graphics, DrawInfo2D info) {
+						new OvalPortrayal2D(3) {
+
+							private static final long serialVersionUID = 6979036146652279170L;
+
+							public void draw(Object object, Graphics2D graphics, DrawInfo2D info) {
 								Student student = (Student) object;
-								int agitationShade = (int) (student
-										.getAgitation() * 255 / 10.0);
-								if (agitationShade > 255)
+								int agitationShade = (int) (student.getAgitation() * 255 / 10.0);
+								if (agitationShade > 255) {
 									agitationShade = 255;
-								paint = new Color(agitationShade, 0,
-										255 - agitationShade);
+								}
+
+								paint = new Color(agitationShade, 0, 255 - agitationShade);
 								super.draw(object, graphics, info);
 							}
-						}, 5.0, null, Color.black, true), 0, 5.0, Color.green,
-						true)));
+							
+						}, 5.0, null, Color.black, true), 
+						0, 5.0, Color.green, true)));
 
-		buddiesPortrayal.setField(new SpatialNetwork2D(students.yard,
-				students.buddies));
+		buddiesPortrayal.setField(new SpatialNetwork2D(students.getYard(), students.getBuddies()));
 		buddiesPortrayal.setPortrayalForAll(new SimpleEdgePortrayal2D());
-		// reschedule the displayer
+
 		display.reset();
 		display.setBackdrop(Color.white);
-		// redraw the display
 	}
 
 	public void init(Controller c) {
@@ -90,18 +91,19 @@ public class StudentsWithUI extends GUIState {
 		display = new Display2D(600, 600, this);
 		display.setClipping(false);
 		displayFrame = display.createFrame();
-		displayFrame.setTitle("Schoolyard Display");
-		c.registerFrame(displayFrame); // so the frame appears in the "Display"
-										// list
+		displayFrame.setTitle("Школьный двор");
+		c.registerFrame(displayFrame); 
 		displayFrame.setVisible(true);
-		display.attach(buddiesPortrayal, "Buddies");
-		display.attach(yardPortrayal, "Yard");
+		display.attach(buddiesPortrayal, "Студенты");
+		display.attach(yardPortrayal, "Связи");
 	}
 
 	public void quit() {
 		super.quit();
-		if (displayFrame != null)
+		if (displayFrame != null) {
 			displayFrame.dispose();
+		}
+			
 		displayFrame = null;
 		display = null;
 	}
