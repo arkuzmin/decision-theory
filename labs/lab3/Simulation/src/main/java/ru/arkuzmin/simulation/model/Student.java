@@ -16,6 +16,8 @@ public class Student implements Steppable {
 	private static final double MAX_SATISFACTION = 0.0;
 	
 	private String name;
+	private double xPosition;
+	private double yPosition;
 	
 	public static final double MAX_FORCE = 3.0;
 	
@@ -27,9 +29,21 @@ public class Student implements Steppable {
 		this.name = name;
 	}
 	
+	public String getName() {
+		return this.name;
+	}
+	
+	public double getXPosition() {
+		return xPosition;
+	}
+	
+	public double getYPosition() {
+		return yPosition;
+	}
+	
 	@Override
 	public String toString() {
-		return "[" + name + "] Удовлетворенность: " + getSatisfaction();
+		return name + " [" + getSatisfaction() + "]";
 	}
 	
 	double friendsClose = MAX_SATISFACTION;
@@ -48,7 +62,11 @@ public class Student implements Steppable {
 	}
 	
 	public double getAgitation() {
-		return friendsClose + enemiesCloser;
+		double agitation = friendsClose + enemiesCloser;
+		if (agitation > MAX_AGITATION) {
+			agitation = MAX_AGITATION;
+		}
+		return agitation;
 	}
 
 	@Override
@@ -104,6 +122,8 @@ public class Student implements Steppable {
 		sumForces.addIn(me);
 
 		// Обновляем текущее положение студента
+		xPosition = me.x + yard.width * 0.5 ;
+		yPosition = me.y + yard.height * 0.5 ;
 		students.getYard().setObjectLocation(this, new Double2D(sumForces));
 	}
 

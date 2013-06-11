@@ -72,12 +72,12 @@ public class StudentsWithUI extends GUIState {
 									agitationShade = 255;
 								}
 
-								paint = new Color(agitationShade, 0, 255 - agitationShade);
+								paint = new Color(agitationShade, 255 - agitationShade, 0);
 								super.draw(object, graphics, info);
 							}
 							
-						}, 5.0, null, Color.black, true), 
-						0, 5.0, Color.green, true)));
+						}, 5.0, null, Color.black, false), 
+						0, 5.0, Color.blue, true)));
 
 		buddiesPortrayal.setField(new SpatialNetwork2D(students.getYard(), students.getBuddies()));
 		buddiesPortrayal.setPortrayalForAll(new SimpleEdgePortrayal2D());
