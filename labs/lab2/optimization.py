@@ -1,6 +1,10 @@
 import time
 import random
 import math
+import randomoptimize
+import hilldown
+import annealingoptimize
+import geneticoptimize
 
 people = [('Seymour','BOS'), 
 ('Franny','DAL'),
@@ -62,3 +66,15 @@ def schedulecost(sol):
   if latestarrival>earliestdep: totalprice+=50
   
   return totalprice+totalwait
+  
+def randomopt(domain,costf):
+    return randomoptimize.randomoptimize(domain,costf)
+    
+def hilldownopt(domain, costf):
+    return hilldown.hilldown(domain, costf)
+    
+def annealingopt(domain, costf):
+    return annealingoptimize.annealingoptimize(domain, costf)
+    
+def geneticopt(domain, costf):
+    return geneticoptimize.geneticoptimize(domain, costf)
